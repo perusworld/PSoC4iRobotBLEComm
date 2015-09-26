@@ -1,0 +1,6 @@
+[submodule "libs/PSoC4BLEComm"]
+	path = libs/PSoC4BLEComm
+	url = https://github.com/perusworld/PSoC4BLEComm.git
+[submodule "libs/PSoC4iRobotSerialComm"]
+	path = libs/PSoC4iRobotSerialComm
+	url = https://github.com/perusworld/PSoC4iRobotSerialComm.git

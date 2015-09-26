@@ -2,12 +2,19 @@
 #include <string.h>
 
 void IRobotBLEOnMessage(char* data, unsigned long len) {
-    if (0 == strcmp("startcleaning", data)) {
+    int startLen = strlen("startcleaning");
+    int stopLen = strlen("stopcleaninganddock");
+    int startCmp = strncmp("startcleaning", data, startLen);
+    int stopCmp = strncmp("stopcleaninganddock", data, stopLen);
+    if (0 == startCmp) {
         IRobotStartCleaning();
-        IRobotBLEResponse("done", strlen("done"));
-    } else if (0 == strcmp("stopcleaninganddock", data)) {
+        IRobotBLEResponse("startedcleaning", strlen("startedcleaning"));
+    } else if (0 == stopCmp) {
         IRobotStopCleaningAndDock();
-        IRobotBLEResponse("done", strlen("done"));
+        IRobotBLEResponse("stoppedcleaninganddocked", strlen("stoppedcleaninganddocked"));
+    } else {
+        IRobotBLEResponse("unknown", strlen("unknown"));
+        IRobotBLEResponse(data, len);
     }
 
 }

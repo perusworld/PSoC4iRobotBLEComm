@@ -6,12 +6,13 @@ int main()
 {
     CyGlobalIntEnable; /* Enable global interrupts. */
 
-    IROBOT_Init();
+    IROBOT_Start();
     CyBle_Start(BLEEventHandler);    
     BLEInit(IRobotBLEOnMessage);
 
     for(;;)
     {
+        SerialReadChar();
     	CyBle_ProcessEvents();
         CheckNotifications();
     }

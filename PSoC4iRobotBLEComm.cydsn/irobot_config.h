@@ -9,7 +9,7 @@
         IROBOT_Start();
     }
 
-    unsigned long SerialReadChar()
+    char SerialReadChar()
     {
         return IROBOT_UartGetChar();
     }
